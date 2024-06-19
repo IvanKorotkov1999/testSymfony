@@ -20,6 +20,27 @@ class Blog
     #[ORM\Column(type: Types::TEXT)]
     private ?string $text = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $anything = null;
+
+    /**
+     * @return string|null
+     */
+    public function getAnything(): ?string
+    {
+        return $this->anything;
+    }
+
+    /**
+     * @param string|null $anything
+     */
+    public function setAnything(?string $anything): static
+    {
+        $this->anything = $anything;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

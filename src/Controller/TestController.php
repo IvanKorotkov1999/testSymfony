@@ -2,23 +2,39 @@
 
 namespace App\Controller;
 
+use App\Entity\Blog;
+use App\Repository\BlogRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class TestController extends AbstractController
 {
-    #[Route('/test/{id}', name: 'test', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function index(int $id): Response
+    #[Route('/', name: 'test')]
+    public function index(BlogRepository $blogRepository, EntityManagerInterface $em): Response
     {
-        if ($id >= 12)
-            echo 'Hello gays';
-        else
-            echo 'Ты слишком мал, пошел в вон';
-        exit();
 
-        return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
-        ]);
+//        $blogs = $blogRepository->findOneBy(['id' => 1]);
+//        $blogs->setTitle('Title Ivan');
+//        $em->flush();
+//        exit;
+//
+//        $blog = (new Blog())
+//            ->setTitle('Title')
+//            ->setText('Text')
+//            ->setAnything( 'Anything')
+//        ;
+//
+//        $em->persist($blog);
+//        $em->flush();
+
+        return $this->redirectToRoute('app_blog_index');
+
+//        exit();
+
+//        return $this->render('test/index.html.twig', [
+//            'controller_name' => 'TestController',
+//        ]);
     }
 }
