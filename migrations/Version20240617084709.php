@@ -23,6 +23,7 @@ final class Version20240617084709 extends AbstractMigration
         $this->addSql('CREATE TABLE blog (
                         id INT AUTO_INCREMENT NOT NULL, 
                         title VARCHAR(255) NOT NULL, 
+                        
                         anything VARCHAR(255) NOT NULL, 
                         text LONGTEXT NOT NULL, 
                         PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
